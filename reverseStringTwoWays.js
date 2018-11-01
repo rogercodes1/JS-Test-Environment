@@ -1,19 +1,26 @@
 console.log("hello")
-var foo = document.getElementById('foo');
+let revArr=[];
 
-// write a method that returns the value "quux"
-function returnCustomAttr() {
-    return foo.getAttribute(("data-bar"))
-}
+var CoolString = {
+  reverseAll: function (str) {
 
-// write another method that returns the value "quux"
-function returnCustomAttr2() {
-    return foo.dataset.bar
-}
+      return(str)
+  },
 
-// write yet another method that retuns the value "quux"
-function returnCustomAttr3() {
+  reverseWords: function (str) {
+      let wordArr = str.split(" ")
+      wordArr.forEach(elem=>{
+        revArr.unshift(elem)
+      })
 
-}
+      console.log(revArr)
+      return wordArr
+  }
+};
+var str = 'Foo bar baz quux';
+CoolString.reverseAll(str)
+CoolString.reverseWords(str);
 
-document.body.innerHTML = returnCustomAttr() + ' <br/>' + returnCustomAttr2() + ' <br/>' + returnCustomAttr3()
+//  elem.split("").forEach(letter=>{
+//           elemArr.unshift(letter)
+//         })
