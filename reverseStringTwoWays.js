@@ -1,9 +1,8 @@
-let revArr=[];
 
-var CoolString = {
+let CoolString = {
   reverseAll: function (str) {
-    let wordArr = str.split(" ")
-    wordArr.forEach(elem=>{
+    let revArr=[];
+    str.split(" ").forEach(elem=>{
       let newWord="";
       for (let i = elem.length - 1; i >= 0; i--) {
         newWord +=elem[i]
@@ -14,16 +13,22 @@ var CoolString = {
     console.log(revArr.join(" "))
     return revArr.join(" ")
   },
-
   reverseWords: function (str) {
-
+    let revWordArr = []
+    str.split(" ").forEach(str=>{
+      let newWord="";
+      for (let i = str.length - 1; i >= 0; i--) {
+        newWord +=str[i]
+      }
+      revWordArr.push(newWord)
+    })
+    console.log(revWordArr.join(" "))
+    return revWordArr.join(" ")
   }
 };
 
-function revStr(str) {
-  return revStr(str.substr(1)) + str.charAt(0);
-}
-var str = 'Foo bar baz quux';
+let str = 'Foo bar baz quux';
+
 CoolString.reverseAll(str)
 CoolString.reverseWords(str);
 
