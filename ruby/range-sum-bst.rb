@@ -34,10 +34,12 @@ end
 # Example 1:
 
 # Input:
-root = [10,5,15,3,7,null,18], L = 7, R = 15
+root = [10,5,15,3,7,null,18]
+# L = 7, R = 15
 Output= 32
 
 # Example 2:
 # Input:
-root2 = [10,5,15,3,7,13,18,1,null,6], L = 6, R = 10
+root2 = [10,5,15,3,7,13,18,1,null,6]
+# L = 6, R = 10
 Output2 = 23
