@@ -1,24 +1,24 @@
-class WebCrawl
-
-ALL = []
- attr_accessor :seed
+require "pry"
 
 
-  def initialize(seed_instagram_id)
-    @seed_instagram_id = seed_instagram_id
-    ALL << self
-  end
+def crawl_instagram_graph(seed_instagram_id)
+    res = "/account/#{seed_instagram_id}"
+    insta_person;
+    newArr = []
+    binding.pry
+    if (res.follower_count >=5000)
+      count = 1
+      until newReq.next_page_cursor == null do
+        newReq = res + "followers?cursor=#{count}"
+        newArr << newReq.data
+        count++1
+      end
+      InstagramAccount.new(
+        res.instagram_id, res.username, res.biography, res.follower_count, res.followers
+      )
 
-  def self.all
-    ALL
-  end
-
-  def crawl_instagram_graph(seed_instagram_id)
-    get = "/account/#{seed_instagram_id}" //makes request
-
-    return []  # TODO: Your Task
-
-  end
+    end
+    return newArr  # TODO: Your Task
 
 end
 
@@ -41,3 +41,14 @@ ALL = []
   end
 
 end
+
+seed_instagram_id = "hi"
+getStr = "/account/#{seed_instagram_id}"
+
+# getObj = {
+#   instagram_id: "<string>",
+#   username: "<string>",
+#   biography: "<string>",
+#   follower_count: "<integer>"
+# }​
+crawl_instagram_graph("socal_corgi")
