@@ -16,44 +16,59 @@ let gridArray = [
 
 
 function singleGridLineArray(gridArray){
-  let xCoordTotal = gridArray.length
-  let yCoordTotal = gridArray[0].length
+  let colTotal = gridArray.length
+  let rowTotal= gridArray[0].length
   let count = 0
   let xCoord = 0
   let yCoord = 0
   let direction = "E";
   let finalArray = []
 
-  // while (gridArray.length != 0 || count === 40){
-    // gridDirection(direction, xCoord, yCoord, xCoordTotal, yCoordTotal)
+  while (count !== 10){
+    // gridDirection(direction, xCoord, yCoord, rowTotal, colTotal)
+    console.log("xCoord: ",xCoord);
+    if (direction === 'E'){
+      finalArray.push(gridArray[yCoord][xCoord])
+      console.log(finalArray);
+      console.log('colTotal:',colTotal, 'rowTotal: ',rowTotal);
+      // debugger
+      xCoord +=1
+      if (xCoord === rowTotal){
+        direction = gridDirection(direction)
+        gridArray.shift();
+        colTotal = gridArray.length
+        // console.log("After shift colTotal:", colTotal);
+        xCoord -=1
+        // debugger
+      }
+    }
+    else if (direction === 'S') {
+      // debugger
+      finalArray.push(gridArray[yCoord][xCoord])
+      gridArray.pop();
+      console.log(finalArray);
+      debugger
+    }
 
-
-    // count++
-  // }
+    console.log("COUNT", count);
+    count++
+  }
 
 }
 
 singleGridLineArray(gridArray)
 
-function gridDirection(
-  direction,
+function gridDirection(direction,
   xCoord,
   yCoord,
-  xCoordTotal,
-  yCoordTotal) {
-  let count = 0
+  rowTotal,
+  colTotal) {
+  let countNum = 0
   switch (direction) {
     case "N":
       return
     case "E":
-      while (yCoord != xCoordTotal || count !=10){
-        console.log(gridArray[xCoord]);
-        console.log(gridArray[xCoord][yCoord]);
-        debugger
-        gridArray[xCoord][yCoord]
-        count++
-      }
-      return
+      return direction = "S";
     case "S":
       return
     case "W":
