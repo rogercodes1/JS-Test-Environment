@@ -10,6 +10,8 @@ let gridArray = [
 // if goin from left to right remove elem and add to finalArray
 // if we reach end of current array move to next direction.
 // i.e south, west, north, east
+// after switching direction push elem to new array
+
 
 function singleGridLineArray(gridArray){
   let arrSize = gridArray.length
