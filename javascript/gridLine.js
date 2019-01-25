@@ -8,7 +8,7 @@ let gridArray = [
   [16,14,12,10]
 ]
 
-function singleGridLineArray(gridArray){
+function singleArrayFromGridArray(gridArray){
   let totalMoves = (gridArray.length * gridArray[0].length)
   let count = 0, xCoord = 0, yCoord = 0
   let direction = "E", finalArray = []
@@ -26,7 +26,6 @@ function singleGridLineArray(gridArray){
     }
     else if (direction === 'S') {
       let arrTotal = gridArray.length - 1
-
       finalArray.push(gridArray[yCoord][xCoord])
       gridArray[yCoord].pop();
       if (arrTotal === yCoord){
@@ -61,7 +60,7 @@ function singleGridLineArray(gridArray){
   return finalArray
 }
 
-// singleGridLineArray(gridArray)
+// singleArrayFromGridArray(gridArray)
 
 function gridDirection(direction) {
   switch (direction) {
@@ -91,10 +90,10 @@ function updatedGridArray(gridArray){
           if (xCoord === arrLength ){
             gridArray.shift();
             xCoord--
-            direction = "S"
+          direction = "S"
           }
           xCoord++
-          debugger
+          break;
       case "S":
           let arrTotal = gridArray.length - 1
           finalArray.push(gridArray[yCoord][xCoord])
@@ -104,6 +103,7 @@ function updatedGridArray(gridArray){
             direction = "W"
           }
           yCoord++
+          break;
       case "W":
           finalArray.push(gridArray[yCoord][xCoord])
           gridArray[yCoord].pop();
@@ -113,6 +113,7 @@ function updatedGridArray(gridArray){
             direction = "N"
           }
           xCoord--
+          break;
       case "N":
           finalArray.push(gridArray[yCoord][xCoord])
           gridArray[yCoord].shift()
@@ -121,8 +122,9 @@ function updatedGridArray(gridArray){
             direction = "E"
           }
           yCoord--
+          break;
       default:
-        return "Error maybe?"
+        return "Got it all"
 
     }
     count++
