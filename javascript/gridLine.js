@@ -16,8 +16,8 @@ let gridArray = [
 
 
 function singleGridLineArray(gridArray){
-  let colTotal = gridArray.length
-  let rowTotal= gridArray[0].length
+  let arrTotal = gridArray.length
+  let elemTotal = gridArray[0].length
   let count = 0
   let xCoord = 0
   let yCoord = 0
@@ -25,19 +25,19 @@ function singleGridLineArray(gridArray){
   let finalArray = []
 
   while (count !== 10){
-    // gridDirection(direction, xCoord, yCoord, rowTotal, colTotal)
+    // gridDirection(direction, xCoord, yCoord, elemTotal , arrTotal)
     console.log("xCoord: ",xCoord);
     if (direction === 'E'){
       finalArray.push(gridArray[yCoord][xCoord])
-      console.log(finalArray);
-      console.log('colTotal:',colTotal, 'rowTotal: ',rowTotal);
+      // console.log(finalArray);
+      // console.log('arrTotal:',arrTotal, 'elemTotal : ',elemTotal );
       // debugger
       xCoord +=1
-      if (xCoord === rowTotal){
+      if (xCoord === elemTotal ){
         direction = gridDirection(direction)
         gridArray.shift();
-        colTotal = gridArray.length
-        // console.log("After shift colTotal:", colTotal);
+        arrTotal = gridArray.length
+        // console.log("After shift arrTotal:", arrTotal);
         xCoord -=1
         // debugger
       }
@@ -45,8 +45,20 @@ function singleGridLineArray(gridArray){
     else if (direction === 'S') {
       // debugger
       finalArray.push(gridArray[yCoord][xCoord])
-      gridArray.pop();
+      debugger
+      gridArray[yCoord].pop();
       console.log(finalArray);
+      yCoord++
+      console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
+      console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
+      if (elemTotal - 1 === gridArray[yCoord - 1]){
+        elemTotal--
+        xCoord--
+        console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
+        console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
+        debugger
+        direction = gridDirection(direction)
+      }
       debugger
     }
 
@@ -61,18 +73,18 @@ singleGridLineArray(gridArray)
 function gridDirection(direction,
   xCoord,
   yCoord,
-  rowTotal,
-  colTotal) {
+  elemTotal ,
+  arrTotal) {
   let countNum = 0
   switch (direction) {
     case "N":
-      return
+      return direction = "E"
     case "E":
       return direction = "S";
     case "S":
-      return
+      return direction = "W"
     case "W":
-      return
+      return direction = "N"
     default:
       break
   }
