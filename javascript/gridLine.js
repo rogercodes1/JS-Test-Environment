@@ -26,7 +26,6 @@ function singleGridLineArray(gridArray){
 
   while (count !== 10){
     // gridDirection(direction, xCoord, yCoord, elemTotal , arrTotal)
-    console.log("xCoord: ",xCoord);
     if (direction === 'E'){
       finalArray.push(gridArray[yCoord][xCoord])
       // console.log(finalArray);
@@ -45,20 +44,28 @@ function singleGridLineArray(gridArray){
     else if (direction === 'S') {
       // debugger
       finalArray.push(gridArray[yCoord][xCoord])
-      debugger
+      // debugger
       gridArray[yCoord].pop();
       console.log(finalArray);
       yCoord++
-      console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
-      console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
-      if (elemTotal - 1 === gridArray[yCoord - 1]){
+      // console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
+      // console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
+      // debugger
+      if (elemTotal - 1 === gridArray[yCoord].length-1){
         elemTotal--
         xCoord--
+        console.log("AFTER:");
         console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
         console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
-        debugger
+        gridArray[yCoord].pop();
+        // debugger
         direction = gridDirection(direction)
       }
+    }
+    else if (direction === "W") {
+      console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
+      console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
+      console.log(gridArray);
       debugger
     }
 
