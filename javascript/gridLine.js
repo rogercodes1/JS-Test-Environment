@@ -1,75 +1,82 @@
-console.log("Grid Line");
+// console.log("Grid Line");
 let title = document.getElementById("h1-title");
 title.innerHTML = "Grid Line"
 let gridArray = [
   [2,4,6,8],
   [1,3,5,7],
   [15,13,11,9],
-  // [16,14,12,10]
+  [16,14,12,10]
 ]
-// Determine size of grid array 3
-// Determine size of sub-array 4
-// if goin from left to right remove elem and add to finalArray
-// if we reach end of current array move to next direction.
-// i.e south, west, north, east
-// after switching direction push elem to new array
-
 
 function singleGridLineArray(gridArray){
-  let arrTotal = gridArray.length
-  let elemTotal = gridArray[0].length
+  let arrTotal = gridArray.length - 1
+  let elemTotal = gridArray[0].length - 1
   let count = 0
   let xCoord = 0
   let yCoord = 0
   let direction = "E";
   let finalArray = []
 
-  while (count !== 10){
-    // gridDirection(direction, xCoord, yCoord, elemTotal , arrTotal)
+  while (count !== 12){
     if (direction === 'E'){
-      finalArray.push(gridArray[yCoord][xCoord])
-      // console.log(finalArray);
-      // console.log('arrTotal:',arrTotal, 'elemTotal : ',elemTotal );
-      // debugger
-      xCoord +=1
-      if (xCoord === elemTotal ){
-        direction = gridDirection(direction)
+      finalArray.push(gridArray[yCoord][0])
+      gridArray[yCoord].shift()
+      if (gridArray[yCoord].length === 0 ){
         gridArray.shift();
-        arrTotal = gridArray.length
-        // console.log("After shift arrTotal:", arrTotal);
-        xCoord -=1
+        arrTotal--
+        xCoord--
+        direction = gridDirection(direction)
         // debugger
       }
+      xCoord++
+
     }
     else if (direction === 'S') {
-      // debugger
-      finalArray.push(gridArray[yCoord][xCoord])
-      // debugger
+      finalArray.push(gridArray[yCoord][elemTotal])
       gridArray[yCoord].pop();
-      console.log(finalArray);
-      yCoord++
-      // console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
-      // console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
-      // debugger
-      if (elemTotal - 1 === gridArray[yCoord].length-1){
-        elemTotal--
+      if (arrTotal === yCoord){
+        // finalArray.push(gridArray[yCoord][xCoord])
         xCoord--
-        console.log("AFTER:");
-        console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
-        console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
-        gridArray[yCoord].pop();
+        yCoord--
+        // gridArray[yCoord].pop();
         // debugger
         direction = gridDirection(direction)
       }
+      yCoord++
     }
     else if (direction === "W") {
+
+      finalArray.push(gridArray[yCoord][xCoord])
+      gridArray[yCoord].pop();
+      xCoord--
+      // console.log("AFTER:");
+      console.log("FINAL: ",finalArray);
+      console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
+      console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
+      console.log("GRID: ",gridArray);
+      debugger
+
+      if (gridArray[yCoord].length === 0){
+        debugger
+
+        finalArray.push(gridArray[yCoord][xCoord])
+        gridArray.pop();
+
+        arrTotal = gridArray.length
+        direction = gridDirection(direction)
+        // debugger
+      }
+    }
+    else if (direction === "N") {
       console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
       console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
       console.log(gridArray);
-      debugger
+      console.log(finalArray);
+
+      debugger;
     }
 
-    console.log("COUNT", count);
+    if (count === 10) {console.log("COUNT", count);}
     count++
   }
 
@@ -96,3 +103,15 @@ function gridDirection(direction,
       break
   }
 }
+
+// [16,14,12,10]
+// [15,13,11,9],
+// [1,3,5,7],
+// [2,4,6,8],
+
+// Determine size of grid array 3
+// Determine size of sub-array 4
+// if goin from left to right remove elem and add to finalArray
+// if we reach end of current array move to next direction.
+// i.e south, west, north, east
+// after switching direction push elem to new array
