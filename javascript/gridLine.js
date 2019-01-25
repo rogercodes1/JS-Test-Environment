@@ -10,89 +10,56 @@ let gridArray = [
 
 function singleGridLineArray(gridArray){
   let totalMoves = (gridArray.length * gridArray[0].length)
-  console.log(totalMoves);
-  let arrTotal = gridArray.length - 1
-  let count = 0
-  let xCoord = 0
-  let yCoord = 0
+  let count = 0 , xCoord = 0, yCoord = 0
   let direction = "E";
   let finalArray = []
+
   while (count !== totalMoves){
     if (direction === 'E'){
-      let elemTotal = gridArray[0].length - 1
+      let arrLength = gridArray[0].length - 1
       finalArray.push(gridArray[yCoord][xCoord])
-
-      // debugger
-      if (xCoord === elemTotal ){
+      if (xCoord === arrLength ){
         gridArray.shift();
-        arrTotal--
-        xCoord--
         direction = gridDirection(direction)
-
+        xCoord--
       }
       xCoord++
-
     }
     else if (direction === 'S') {
-      // let elemTotal = gridArray[0].length - 1
       let arrTotal = gridArray.length - 1
-      // console.log("FINAL: ",finalArray);
-      // console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
-      // console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
-      // console.log("GRID: ",gridArray);
-      // debugger
+
       finalArray.push(gridArray[yCoord][xCoord])
       gridArray[yCoord].pop();
-      yCoord++
-      if (arrTotal === yCoord - 1){
-
-        // finalArray.push(gridArray[yCoord][xCoord])
-        xCoord--
-        yCoord--
-        // gridArray[yCoord].pop();
-        // debugger
+      if (arrTotal === yCoord){
         direction = gridDirection(direction)
+        xCoord--, yCoord--
       }
+      yCoord++
     }
     else if (direction === "W") {
-      let elemTotal = gridArray[0].length - 1
-
       finalArray.push(gridArray[yCoord][xCoord])
       gridArray[yCoord].pop();
       if (xCoord === 0){
         gridArray.pop();
         direction = gridDirection(direction)
-        yCoord--
-        xCoord++
+        yCoord--, xCoord++
       }
       xCoord--
     }
     else if (direction === "N") {
-      let elemTotal = gridArray[0].length - 1
       finalArray.push(gridArray[yCoord][xCoord])
       gridArray[yCoord].shift()
       if (yCoord === 0){
-
-        // finalArray.push(gridArray[yCoord][xCoord])
-        // gridArray[yCoord].shift()
         direction = gridDirection(direction)
         yCoord++
-        // console.log("FINAL: ",finalArray);
-        // console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
-        // console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
-        // console.log("GRID: ",gridArray);
-        // debugger
       }
       yCoord--
 
     }
-
-    if (count === 10) {console.log("COUNT", count);}
     count++
   }
-  debugger
   console.log("FINAL",finalArray);
-
+  return finalArray
 }
 
 singleGridLineArray(gridArray)
@@ -111,6 +78,13 @@ function gridDirection(direction) {
       break
   }
 }
+
+// console.log("FINAL: ",finalArray);
+// console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
+// console.log("yCoord   : ", yCoord," xCoord  :",xCoord);
+// console.log("GRID: ",gridArray);
+// debugger
+
 
 // [16,14,12,10]
 // [15,13,11,9],
