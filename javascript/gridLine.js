@@ -10,9 +10,8 @@ let gridArray = [
 
 function singleGridLineArray(gridArray){
   let totalMoves = (gridArray.length * gridArray[0].length)
-  let count = 0 , xCoord = 0, yCoord = 0
-  let direction = "E";
-  let finalArray = []
+  let count = 0, xCoord = 0, yCoord = 0
+  let direction = "E", finalArray = []
 
   while (count !== totalMoves){
     if (direction === 'E'){
@@ -78,6 +77,71 @@ function gridDirection(direction) {
       break
   }
 }
+function updatedArray(gridArray){
+while (count !== totalMoves){
+  switch (direction) {
+    case "E":
+        let arrLength = gridArray[0].length - 1
+        finalArray.push(gridArray[yCoord][xCoord])
+        if (xCoord === arrLength ){
+          gridArray.shift();
+          xCoord--
+          return direction = "S"
+        }
+        xCoord++
+    case "S":
+        let arrTotal = gridArray.length - 1
+        finalArray.push(gridArray[yCoord][xCoord])
+        gridArray[yCoord].pop();
+        if (arrTotal === yCoord){
+          xCoord--, yCoord--
+          return direction = "W"
+        }
+        yCoord++
+    case "W":
+        finalArray.push(gridArray[yCoord][xCoord])
+        gridArray[yCoord].pop();
+        if (xCoord === 0){
+          gridArray.pop();
+          direction = gridDirection(direction)
+          yCoord--, xCoord++
+        }
+        xCoord--
+    case "N":
+
+      break;
+    default:
+
+  }
+
+
+
+  else if (direction === "W") {
+    finalArray.push(gridArray[yCoord][xCoord])
+    gridArray[yCoord].pop();
+    if (xCoord === 0){
+      gridArray.pop();
+      direction = gridDirection(direction)
+      yCoord--, xCoord++
+    }
+    xCoord--
+  }
+  else if (direction === "N") {
+    finalArray.push(gridArray[yCoord][xCoord])
+    gridArray[yCoord].shift()
+    if (yCoord === 0){
+      direction = gridDirection(direction)
+      yCoord++
+    }
+    yCoord--
+
+  }
+  count++
+}
+console.log("FINAL",finalArray);
+return finalArray
+}
+
 
 // console.log("FINAL: ",finalArray);
 // console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
