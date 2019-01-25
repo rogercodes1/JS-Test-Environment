@@ -61,7 +61,7 @@ function singleGridLineArray(gridArray){
   return finalArray
 }
 
-singleGridLineArray(gridArray)
+// singleGridLineArray(gridArray)
 
 function gridDirection(direction) {
   switch (direction) {
@@ -77,71 +77,60 @@ function gridDirection(direction) {
       break
   }
 }
-function updatedArray(gridArray){
-while (count !== totalMoves){
-  switch (direction) {
-    case "E":
-        let arrLength = gridArray[0].length - 1
-        finalArray.push(gridArray[yCoord][xCoord])
-        if (xCoord === arrLength ){
-          gridArray.shift();
+function updatedGridArray(gridArray){
+  let totalMoves = (gridArray.length * gridArray[0].length)
+  let count = 0, xCoord = 0, yCoord = 0
+  let direction = "E", finalArray = []
+  console.log("obj");
+  while (count !== totalMoves){
+    switch (direction) {
+      case "E":
+          let arrLength = gridArray[0].length - 1
+          finalArray.push(gridArray[yCoord][xCoord])
+          console.log(finalArray);
+          if (xCoord === arrLength ){
+            gridArray.shift();
+            xCoord--
+            direction = "S"
+          }
+          xCoord++
+          debugger
+      case "S":
+          let arrTotal = gridArray.length - 1
+          finalArray.push(gridArray[yCoord][xCoord])
+          gridArray[yCoord].pop();
+          if (arrTotal === yCoord){
+            xCoord--, yCoord--
+            direction = "W"
+          }
+          yCoord++
+      case "W":
+          finalArray.push(gridArray[yCoord][xCoord])
+          gridArray[yCoord].pop();
+          if (xCoord === 0){
+            gridArray.pop();
+            yCoord--, xCoord++
+            direction = "N"
+          }
           xCoord--
-          return direction = "S"
-        }
-        xCoord++
-    case "S":
-        let arrTotal = gridArray.length - 1
-        finalArray.push(gridArray[yCoord][xCoord])
-        gridArray[yCoord].pop();
-        if (arrTotal === yCoord){
-          xCoord--, yCoord--
-          return direction = "W"
-        }
-        yCoord++
-    case "W":
-        finalArray.push(gridArray[yCoord][xCoord])
-        gridArray[yCoord].pop();
-        if (xCoord === 0){
-          gridArray.pop();
-          direction = gridDirection(direction)
-          yCoord--, xCoord++
-        }
-        xCoord--
-    case "N":
+      case "N":
+          finalArray.push(gridArray[yCoord][xCoord])
+          gridArray[yCoord].shift()
+          if (yCoord === 0){
+            yCoord++
+            direction = "E"
+          }
+          yCoord--
+      default:
+        return "Error maybe?"
 
-      break;
-    default:
-
-  }
-
-
-
-  else if (direction === "W") {
-    finalArray.push(gridArray[yCoord][xCoord])
-    gridArray[yCoord].pop();
-    if (xCoord === 0){
-      gridArray.pop();
-      direction = gridDirection(direction)
-      yCoord--, xCoord++
     }
-    xCoord--
+    count++
   }
-  else if (direction === "N") {
-    finalArray.push(gridArray[yCoord][xCoord])
-    gridArray[yCoord].shift()
-    if (yCoord === 0){
-      direction = gridDirection(direction)
-      yCoord++
-    }
-    yCoord--
-
-  }
-  count++
+  console.log("FINAL",finalArray);
+  return finalArray
 }
-console.log("FINAL",finalArray);
-return finalArray
-}
-
+updatedGridArray(gridArray)
 
 // console.log("FINAL: ",finalArray);
 // console.log('arrTotal :',arrTotal,'elemTotal : ',elemTotal );
