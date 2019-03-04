@@ -1,6 +1,6 @@
 // console.log("2N-Arr");
 
-var repeatedNTimes = function(A) {
+let repeatedNTimes = function(A) {
     console.log("A: ",A)
     let countNumObj = {};
 
