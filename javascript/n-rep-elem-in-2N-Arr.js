@@ -38,19 +38,19 @@ var repeatedNTimes = function (A) {
 };
 
 
-var repeatedNTimes = function(A) {
-    let uniqueTracker = {};
-    for (const el of A) {
-        if (uniqueTracker[el]) {
-            return el;
-        } else {
-            uniqueTracker[el] = 1;
-        }
-        console.log(uniqueTracker);
-
-    }
-    console.log(uniqueTracker);
-    return null;
-};
+// var repeatedNTimes = function(A) {
+//     let uniqueTracker = {};
+//     for (const el of A) {
+//         if (uniqueTracker[el]) {
+//             return el;
+//         } else {
+//             uniqueTracker[el] = 1;
+//         }
+//         console.log(uniqueTracker);
+//
+//     }
+//     console.log(uniqueTracker);
+//     return null;
+// };
 
 repeatedNTimes(arr2)
