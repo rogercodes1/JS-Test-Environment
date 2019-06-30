@@ -7,8 +7,16 @@ let s = "dabbcabcd"
 function shortestSubstring(s){
   let arr = s.split("")
   let charValArr = generateArrayOfChars(arr)
+  let charLen = charValArr.length
+  let i = 0;
+
+  while (i< arr.length){
+    let strCheck = arr.slice(i,charLen-1)
+    console.log("S: ",strCheck);
+  }
   console.log("C:", charValArr);
   debugger
+
 }
 shortestSubstring(s)
 
