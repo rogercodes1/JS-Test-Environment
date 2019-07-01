@@ -31,6 +31,7 @@ function shortestSubstring(s){
         j++
       }
     } // end of while
+    
     let currStr = arr.slice(start,end).join("")
     if (count === charValArr.length && currStr.length < result.length ){
       result = currStr
@@ -44,7 +45,6 @@ function shortestSubstring(s){
     i++
   }
   return result.length
-
 }
 
 // generates the unique chars/letters needed to compare to find a solution.
