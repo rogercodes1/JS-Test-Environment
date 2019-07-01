@@ -1,9 +1,7 @@
-// console.log("SHORT");
 
 let s = "dabbcabcd"
 let ss = "dabbacbcd"
 
-// output = abcd
 
 // solution runs in O(ab) time. Meaning the first while loop is the first O(n) and
 // b is the time of the second while loop which is not the same size of the first loop.
@@ -31,7 +29,7 @@ function shortestSubstring(s){
         j++
       }
     } // end of while
-    
+
     let currStr = arr.slice(start,end).join("")
     if (count === charValArr.length && currStr.length < result.length ){
       result = currStr
@@ -57,5 +55,4 @@ function generateArrayOfChars(arr){
   }
   return Object.keys(charObj)
 }
-
 shortestSubstring(ss)
