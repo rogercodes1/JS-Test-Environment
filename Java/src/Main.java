@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Arrays;
 
 public class Main {
 
@@ -12,6 +13,7 @@ public class Main {
         numbers[2] = 28;
         numbers[3] = 40;
         numbers[4] = 77;
+        Arrays.sort(numbers);
 
         String[] newStr = new String[2];
         newStr[0] = "Bitter Cup";
